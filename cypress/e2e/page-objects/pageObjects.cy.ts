@@ -1,6 +1,6 @@
 
 
-class homePage {
+export class homePage {
     elements = {
         getStartedButton: () => cy.get('.getStarted_Sjon'),
         searchInput: () => cy.get('.DocSearch'),
@@ -16,14 +16,12 @@ class homePage {
         this.elements.searchInput().click()
     }
     
-    fillInSearch(search_text) {
-        this.ele
+    fillInSearch(search_text: string) {
         this.elements.writingTestSearch().type(search_text)
     }
 
-    clickSearchOutput(text) {
+    clickSearchOutput(text: string) {
         this.elements.searchOutput().contains(text).click()
     }
 
 }
-module.exports = new homePage();
