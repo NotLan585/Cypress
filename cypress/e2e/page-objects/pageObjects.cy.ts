@@ -5,7 +5,8 @@ export class homePage {
         getStartedButton: () => cy.get('.getStarted_Sjon'),
         searchInput: () => cy.get('.DocSearch'),
         writingTestSearch: () => cy.get('input[placeholder="Search docs"]'),
-        searchOutput: () => cy.get('.DocSearch-Hit-title')
+        searchOutput: () => cy.get('.DocSearch-Hit-title'),
+        gitHubButton: () => cy.get('.gh-btn')
     }
 
     clickGetStartedButton() {
@@ -22,6 +23,10 @@ export class homePage {
 
     clickSearchOutput(text: string) {
         this.elements.searchOutput().contains(text).click()
+    }
+
+    clickGithubButton() {
+        this.elements.gitHubButton().click()
     }
 
 }
