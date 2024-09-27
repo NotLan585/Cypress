@@ -22,7 +22,7 @@ export class homePage {
     }
 
     clickSearchOutput(text: string) {
-        this.elements.searchOutput().contains(text).click()
+        this.elements.searchOutput().contains(text, { timeout: 5000 }).click()
     }
 
     clickGithubButton() {

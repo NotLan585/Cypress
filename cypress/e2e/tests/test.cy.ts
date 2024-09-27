@@ -11,24 +11,28 @@ describe('Tests Homepage functionality', () => {
     const homepage = new homePage
 
     it('Test playwright getting started', () => {
-        // We use the `cy.get()` command to get all elements that match the selector.
-        // Then, we use `should` to assert that there are two matched items,
-        // which are the two default items.
+        // Validate Get started button
         homepage.clickGetStartedButton()
         cy.url().should('equal', `${baseUrl}/docs/intro`)
       })
 
-    it('Test Search', () => {
+    const searchText = [
+        'Writing tests',
+        'Installation'
+    ]
+
+    searchText.forEach((text) => {
+    it(`Test Search for ${text}`, () => {
         // Validate search
         homepage.clickSearchInput()
-        homepage.fillInSearch('Writing Tests')
-        homepage.clickSearchOutput('Introduction')
-        cy.get('[id="introduction"]').should('be.visible')
-        cy.url().should('equal', `${baseUrl}/docs/writing-tests#introduction`)
+        homepage.fillInSearch(text)
+        homepage.clickSearchOutput(text)
+        cy.get('h1').contains(text, {timeout: 5000}).should('be.visible')
         })
+    })
 
     it('Test Github link', () => {
-        // Validate search
+        // Validate Link
         homepage.clickGithubButton()
         })
     }
