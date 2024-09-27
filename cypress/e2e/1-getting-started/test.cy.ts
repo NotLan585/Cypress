@@ -1,3 +1,4 @@
+import { should } from 'chai';
 import { homePage } from '../page-objects/pageObjects.cy';
 const baseUrl = Cypress.config('baseUrl');
 
@@ -23,6 +24,7 @@ describe('Tests Homepage functionality', () => {
         homepage.fillInSearch('Writing Tests')
         homepage.clickSearchOutput('Introduction')
         cy.get('[id="introduction"]').should('be.visible')
+        cy.url().should('equal', `${baseUrl}/docs/writing-tests#introduction`)
         })
     }
 )
